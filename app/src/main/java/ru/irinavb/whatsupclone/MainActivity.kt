@@ -1,10 +1,10 @@
 package ru.irinavb.whatsupclone
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -35,6 +35,18 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_settings -> true
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
     inner class SectionPagerAdapter(fm: FragmentManager): FragmentPagerAdapter(fm) {
         override fun getCount(): Int {
             return 4
@@ -57,7 +69,6 @@ class MainActivity : AppCompatActivity() {
         ): View? {
 
             _binding = FragmentMainBinding.inflate(inflater, container, false)
-            binding.sectionLabel.text = "Hello world from section ${arguments?.getInt(ARG_SECTION_NUMBER)}"
             return binding.root
 
         }
@@ -83,5 +94,9 @@ class MainActivity : AppCompatActivity() {
                 return fragment
             }
         }
+    }
+
+    companion object {
+        fun newIntent(context: Context) = Intent(context, MainActivity::class.java)
     }
 }
