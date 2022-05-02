@@ -1,4 +1,4 @@
-package ru.irinavb.whatsupclone
+package ru.irinavb.whatsupclone.activities
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
+import ru.irinavb.whatsupclone.R
 import ru.irinavb.whatsupclone.databinding.ActivityMainBinding
 import ru.irinavb.whatsupclone.databinding.FragmentMainBinding
 
@@ -19,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private var sectionPagerAdapter: SectionPagerAdapter? = null
 
     private lateinit var binding: ActivityMainBinding
+    private val firebaseAuth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,10 +44,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_settings -> true
+        when (item.itemId) {
+            R.id.action_logout -> onLogout()
             else -> super.onOptionsItemSelected(item)
         }
+        return true
+    }
+
+    private fun onLogout() {
+        firebaseAuth.signOut()
+        startActivity(LoginActivity.newIntent(this))
+        finish()
     }
 
     inner class SectionPagerAdapter(fm: FragmentManager): FragmentPagerAdapter(fm) {
