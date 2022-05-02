@@ -17,8 +17,13 @@
     <string name="sign_up">Sign Up</string>
     <string name="no_account_go_to_signup"><u>No account? Go to Signup</u></string>
     <string name="logout">Logout</string>
-    <string name="already_have_an_account_go_to_login"><u>Already have an account? Go to
-        Login</u></string>
+    <string name="already_have_an_account_go_to_login">
+        <u>Already have an account? Go to Login</u>
+    </string>
     <string name="name">Name</string>
     <string name="phone">Phone</string>
+    <string name="profile">Profile</string>
+    <string name="apply">apply</string>
+    <string name="delete_account">Delete account</string>
+    <string name="profile_image">Profile image</string>
 </resources>
