@@ -9,3 +9,12 @@ data class User(
     val statusUrl: String? = "",
     val statusTime: String? = ""
 )
+
+data class Contact (
+    val name: String?,
+    val phone: String?
+)
+
+data class Chat(
+    val chatParticipants: ArrayList<String>
+)

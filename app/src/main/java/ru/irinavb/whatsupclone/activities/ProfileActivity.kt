@@ -103,7 +103,7 @@ class ProfileActivity : AppCompatActivity() {
         AlertDialog.Builder(this)
             .setTitle("Delete account")
             .setMessage("This will delete your profile information. Are you sure?")
-            .setPositiveButton("Yes") { dialog, which ->
+            .setPositiveButton("Yes") { _, _ ->
                 Toast.makeText(this, "Profile Deleted", Toast.LENGTH_SHORT).show()
                 firebaseDb
                     .collection(DATA_USERS)
